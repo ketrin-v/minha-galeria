@@ -1,18 +1,235 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha Galeria</title>
+    <title>Galeria de Livros</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 2px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            padding: 10px;
+        }
+
+        .book-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .book-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .book-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .book-info {
+            padding: 20px;
+            background: white;
+        }
+
+        .book-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .book-author {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .book-rating {
+            color: #ffc107;
+            font-size: 1.1em;
+            letter-spacing: 2px;
+        }
+
+        .book-price {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.3em;
+            margin-top: 10px;
+        }
+
+        /* Efeito de sobreposição */
+        .book-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(102, 126, 234, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .book-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Responsividade */
+        @media (max-width: 1024px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .container {
+                max-width: 800px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
-
-
-
-
 <body>
-   livros 
+    <div class="container">
+        <h1>📚 Nossa Galeria de Livros</h1>
+        
+        <div class="gallery">
+            <!-- Livro 1 -->
+            <div class="book-card">
+                <img src="https://m.media-amazon.com/images/I/81l3rZK4lnL._AC_UF1000,1000_QL80_.jpg" 
+                     alt="Capa do livro Dom Casmurro" 
+                     class="book-image">
+                <div class="book-info">
+                    <div class="book-title">Dom Casmurro</div>
+                    <div class="book-author">Machado de Assis</div>
+                    <div class="book-rating">★★★★★</div>
+                    <div class="book-price">R$ 39,90</div>
+                </div>
+            </div>
 
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQvw5b22IZVAvEgGaz0jVZDdoQQxFXq5ulPA&s">
+            <!-- Livro 2 -->
+            <div class="book-card">
+                <img src="https://m.media-amazon.com/images/I/71jHjskpBzL._AC_UF1000,1000_QL80_.jpg" 
+                     alt="Capa do livro O Alquimista" 
+                     class="book-image">
+                <div class="book-info">
+                    <div class="book-title">O Alquimista</div>
+                    <div class="book-author">Paulo Coelho</div>
+                    <div class="book-rating">★★★★☆</div>
+                    <div class="book-price">R$ 34,90</div>
+                </div>
+            </div>
 
+            <!-- Livro 3 -->
+            <div class="book-card">
+                <img src="https://m.media-amazon.com/images/I/81Xb1I0kQzL._AC_UF1000,1000_QL80_.jpg" 
+                     alt="Capa do livro A Menina que Roubava Livros" 
+                     class="book-image">
+                <div class="book-info">
+                    <div class="book-title">A Menina que Roubava Livros</div>
+                    <div class="book-author">Markus Zusak</div>
+                    <div class="book-rating">★★★★★</div>
+                    <div class="book-price">R$ 49,90</div>
+                </div>
+            </div>
+
+            <!-- Livro 4 -->
+            <div class="book-card">
+                <img src="https://m.media-amazon.com/images/I/81U7jW1SqJL._AC_UF1000,1000_QL80_.jpg" 
+                     alt="Capa do livro 1984" 
+                     class="book-image">
+                <div class="book-info">
+                    <div class="book-title">1984</div>
+                    <div class="book-author">George Orwell</div>
+                    <div class="book-rating">★★★★★</div>
+                    <div class="book-price">R$ 42,90</div>
+                </div>
+            </div>
+
+            <!-- Livro 5 -->
+            <div class="book-card">
+                <img src="https://m.media-amazon.com/images/I/91bYsX41DVL._AC_UF1000,1000_QL80_.jpg" 
+                     alt="Capa do livro O Pequeno Príncipe" 
+                     class="book-image">
+                <div class="book-info">
+                    <div class="book-title">O Pequeno Príncipe</div>
+                    <div class="book-author">Antoine de Saint-Exupéry</div>
+                    <div class="book-rating">★★★★★</div>
+                    <div class="book-price">R$ 29,90</div>
+                </div>
+            </div>
+
+            <!-- Livro 6 -->
+            <div class="book-card">
+                <img src="https://m.media-amazon.com/images/I/81iqZ2HHD-L._AC_UF1000,1000_QL80_.jpg" 
+                     alt="Capa do livro Harry Potter e a Pedra Filosofal" 
+                     class="book-image">
+                <div class="book-info">
+                    <div class="book-title">Harry Potter e a Pedra Filosofal</div>
+                    <div class="book-author">J.K. Rowling</div>
+                    <div class="book-rating">★★★★★</div>
+                    <div class="book-price">R$ 54,90</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
